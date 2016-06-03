@@ -1,14 +1,12 @@
 package com.myolnir.model;
 
+import org.springframework.data.jpa.domain.AbstractPersistable;
+
 import javax.persistence.*;
 
 @Entity
 @Table (name = "user")
-public class User {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class User extends AbstractPersistable<Long>{
 
     @Column (nullable = false)
     private String name;

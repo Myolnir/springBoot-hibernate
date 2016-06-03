@@ -5,6 +5,8 @@ import com.myolnir.repository.RelationalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.*;
+
 @Service
 public class RelationalService {
 
@@ -13,5 +15,15 @@ public class RelationalService {
 
     public void save (User object) {
         repository.save(object);
+    }
+
+    public Optional<List<User>> findAll() {
+        Iterable<User> users = repository.findAll();
+        List<User> target = null;
+        if (users != null) {
+            target = new ArrayList<>();
+            users.forEach(target::add);
+        }
+        return Optional.of(target);
     }
 }
